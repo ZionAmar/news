@@ -1,20 +1,23 @@
-
-// Assume you are fetching data using fetch API
-function news() {
-    fetch('/news')
+//פונקציה להצגת המבזקים בדף
+function fetchNews(url, siteIcon, siteName) {
+    fetch(`/news?url=${url}`)
         .then(response => response.json())
+        // הצגת המבזקים בדף
         .then(data => {
-            const newsContainer = document.getElementById('news-container');
+            console.log(data);
+            const newsContainer = document.getElementById('news_container');
+            newsContainer.innerHTML = ''; // ניקוי הדף לפני הוספת המבזקים
+
             data.items.forEach(item => {
                 const newsItem = document.createElement('div');
-                newsItem.classList.add('news-item');
+                newsItem.classList.add('news_item');
 
                 const title = document.createElement('a');
                 title.href = item.link;
-                title.textContent = item.title;
+                title.innerHTML = item.title;
 
                 const pubDate = document.createElement('p');
-                pubDate.textContent = `Published on: ${new Date(item.pubDate).toLocaleString()}`;
+                pubDate.innerHTML = ` פורסם ב: ${new Date(item.pubDate).toLocaleString()}`;
 
                 const description = document.createElement('p');
                 description.textContent = item.description;
@@ -25,8 +28,39 @@ function news() {
 
                 newsContainer.appendChild(newsItem);
             });
+
+            // שמירת שם האתר הנבחר בlocal storage
+            localStorage.setItem('SiteName', siteName);
+            // הצגת אייקון האתר הנבחר בדף
+            const icPage = document.querySelector('#page_ic');
+            icPage.style.backgroundImage = `url('${siteIcon}')`;
+
         })
-        .catch(error => console.error(error));
+        .catch(error => console.error('Error fetching news:', error));
 }
-news();
-setTimeout(news,6000);
+//פונקציה לשליפת האתר הנבחר מהמשתמש
+function selectSite(selectTag) {
+        const selectedOption = selectTag.options[selectTag.selectedIndex];
+        const selectedUrl = selectedOption.value;
+        const selectedIcon = selectedOption.getAttribute('data-icon');
+        const selectedName = selectedOption.innerHTML;
+    console.log(selectTag);
+        fetchNews(selectedUrl, selectedIcon, selectedName);
+}
+// פונקציה לבחירת אתר מה Local Storage
+function selectSiteFromStorage() {
+    const storedSiteName = localStorage.getItem('SiteName');
+    const selectedSite = document.querySelector('#siteSelect');
+    if (storedSiteName) {
+        // מצא את ה-option של ה-site ששמור ב-local storage
+        const optionToSelect = Array.from(selectedSite.options).find(option => option.innerHTML === storedSiteName);
+        if (optionToSelect) {
+            // בצע בחירה אוטומטית בתגית select
+            optionToSelect.selected = true;
+            // קרא לפונקציה שמציגה את המבזקים
+            selectSite(selectedSite);
+        }
+    }
+}
+// הוסף את האירוע onload ל-body שיקרא לפונקציה שבודקת ובוחרת את האתר מה Local Storage
+// document.body.onload = selectSiteFromStorage;

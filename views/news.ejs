@@ -4,12 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News Feed</title>
-  <link rel="stylesheet" href="../css/news.css">
+  <link rel="stylesheet" href="/css/news.css">
+  <link
+          rel="icon"
+          href="/images/news.webp"
+          type="image/webp"
+          sizes="16x16 32x32 48x48 64x64 128x128"
+  />
 </head>
-<body>
-<h1>מבזקים Live</h1>
-<div id="news-container"></div>
-
-<script src="../js/newsScript.js"></script>
+<body onload="selectSiteFromStorage()">
+<header>
+  <div id="siteFeedHeader">
+    <a href="/"><div id="page_ic"></div></a>
+    <h1 >מבזקים Live</h1>
+    <select id="siteSelect" onchange="selectSite(this)">
+      <option value="https://www.hayadan.org.il/feed" data-icon="/images/news.webp">בחר אתר</option>
+      <option value="https://www.ynet.co.il/Integration/StoryRss1854.xml" data-icon="/images/Ynet.png">חדשות Ynet</option>
+      <option value="https://www.maariv.co.il/Rss/RssFeedsMivzakiChadashot" data-icon="/images/Maariv.png">מעריב</option>
+      <option value="https://www.globes.co.il/webservice/rss/rssfeeder.asmx/FeederNode?iID=2" data-icon="/images/Globs.jpg">גלובס</option>
+      <option value="https://a.kikar.co.il/v1/rss/scoop-news/latest/rss2" data-icon="/images/Kikar.png">כיכר השבת</option>
+      <option value="https://www.haaretz.co.il/srv/htz---all-articles" data-icon="/images/Haaretz.png">הארץ</option>
+    </select>
+  </div>
+</header>
+<main>
+  <div id="news_container"></div>
+</main>
+<footer>
+  <a href="https://zion-amar.ez4tackit.com">
+    &copy; Zion Amar
+  </a>
+</footer>
+<script src="/js/newsScript.js"></script>
 </body>
 </html>

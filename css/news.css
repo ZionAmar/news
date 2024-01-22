@@ -1,24 +1,79 @@
 body {
   direction: rtl;
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #f1f1f1; /* Set background color as needed */
+  padding: 10px;
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+#siteFeedHeader {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 h1 {
   text-align: center;
 }
 
-.news-item {
+#page_ic{
+  width: 50px;
+  height: 50px;
+  background-image: url("https://t3.ftcdn.net/jpg/06/39/82/32/360_F_639823251_NscxKFg1c7dL1GYXOu7ZKg7PVrmCwMHM.webp");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+main {
+  margin-top: 100px; /* Adjust margin-top based on header height */
+  margin-bottom: 40px; /* Adjust margin-bottom based on footer height */
+  padding: 10px;
+}
+
+#siteSelect {
+  padding: 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  appearance: none;
+}
+
+.news_item {
   border-bottom: 1px solid #ddd;
   padding: 10px;
 }
 
-.news-item a {
+.news_item a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
 }
 
-.news-item p {
+.news_item p {
   margin: 5px 0;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f1f1f1; /* Set background color as needed */
+  padding: 10px;
+  text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
 }

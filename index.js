@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+app.use(cors());
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 const bodyParser = require('body-parser');
@@ -27,21 +29,22 @@ app.get("/", (req, res) => {
 
 
 app.get('/news', async (req, res) => {
+  const rssFeedUrl = req.query.url;
+  console.log(rssFeedUrl);
   try {
-    const feed = await parser.parseURL('https://www.ynet.co.il/Integration/StoryRss1854.xml');
+    const feed = await parser.parseURL(rssFeedUrl);
 
-    // יכול להשתמש במשתנים של feed כמו title, description, link, וכן הלאה
     const items = feed.items.map(item => ({
       title: item.title,
       link: item.link,
       pubDate: item.pubDate,
       description: item.description,
-      // וכל פרט אחר שתרצה להציג
     }));
 
     res.json({ items });
   } catch (error) {
-    console.error(error);
+    console.error('Error fetching and parsing RSS feed:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
