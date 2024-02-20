@@ -1,0 +1,21 @@
+
+.running-text {
+    position: absolute;
+    top: 50%; /* מיושר למעלה */
+    left: 50%; /* מיושר לאמצע */
+    transform: translate(-50%, -50%); /* מיקום אמצעי */
+    background-color: rgba(255, 255, 255, 0.4); /* רקע רקיע שקוף */
+    padding: 10px; /* מרווח פנימי */
+    font-size: 20px; /* גודל הטקסט */
+    color: #333; /* צבע הטקסט */
+    border-radius: 30px; /* פינות מעוגלות */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* צל כדי להבדיל */
+    white-space: nowrap; /* מניעת רצפיות */
+    animation: running-text-animation 20s linear infinite; /* אנימציה חלקה יותר */
+}
+
+@keyframes running-text-animation {
+    0% { transform: translate(-50%, -50%) translateX(-150%); opacity: 0; }
+    10%, 90% { opacity: 1; }
+    100% { transform: translate(-50%, -50%) translateX(150%); opacity: 0; }
+}

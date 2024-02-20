@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News Feed</title>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="'white'">
+  <link rel="apple-touch-startup-image" href="/images/news-icon.png">
+  <link rel="apple-touch-icon" href="/images/news-icon_128.png">
+  <link rel="apple-touch-icon-precomposed" sizes="128x128" href="/images/news-icon_196.png">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="/images/news-icon_128.png">
+  <link rel="shortcut icon" sizes="128x128" href="/images/news-icon_196.png">
+  <link rel="icon" sizes="196x196" href="/images/news-icon_128.png" type="image/png">
+  <link rel="icon" sizes="128x128" href="/images/news-icon_196.png" type="image/png">
+
+  <title>מבזקים Live</title>
   <link rel="stylesheet" href="/css/news.css">
-  <link
-          rel="icon"
-          href="/images/news.webp"
-          type="image/webp"
-          sizes="16x16 32x32 48x48 64x64 128x128"
-  />
+  <link rel="stylesheet" href="/css/weather.css">
+  <link rel="stylesheet" href="/css/menu.css">
+  <link rel="stylesheet" href="/css/ads.css">
+
 </head>
-<body onload="selectSiteFromStorage()">
-<header>
+
+<body onload="">
+<header id="header">
   <div id="siteFeedHeader">
-    <a href="/"><div id="page_ic"></div></a>
-    <h1 >מבזקים Live</h1>
+    <div id="page_ic"></div>
+    <a href="/"><h2 style="color: red"><span style="color: black">מבזקים </span>Live</h2></a>
     <select id="siteSelect" onchange="selectSite(this)">
       <option value="https://www.hayadan.org.il/feed" data-icon="/images/news.webp">בחר אתר</option>
       <option value="https://www.ynet.co.il/Integration/StoryRss1854.xml" data-icon="/images/Ynet.png">חדשות Ynet</option>
@@ -24,17 +38,57 @@
       <option value="https://www.globes.co.il/webservice/rss/rssfeeder.asmx/FeederNode?iID=2" data-icon="/images/Globs.jpg">גלובס</option>
       <option value="https://a.kikar.co.il/v1/rss/scoop-news/latest/rss2" data-icon="/images/Kikar.png">כיכר השבת</option>
       <option value="https://www.haaretz.co.il/srv/htz---all-articles" data-icon="/images/Haaretz.png">הארץ</option>
+      <option value="https://www.inn.co.il/Rss.aspx" data-icon="/images/7.png">ערוץ 7</option>
+      <option value="http://rss.news.yahoo.com/rss/world" data-icon="/images/yahoo.png">yahoo news</option>
+      <option value="http://www.reddit.com/r/politics/.rss" data-icon="/images/reddit.png">reddit</option>
+      <option value="https://rss.jpost.com/rss/rssfeedsfrontpage.aspx" data-icon="/images/post.jpg">Jerusalem Post</option>
+      <option value="https://www.timesofisrael.com/feed/" data-icon="/images/Times.png">Times</option>
     </select>
+  </div>
+  <div id="weather-banner">
+    <div id="menu" onclick="toggleMenu()">
+      <div class="menu-item"></div>
+      <div class="menu-item"></div>
+      <div class="menu-item"></div>
+    </div>
+    <a href="https://openweathermap.org/" id="weather-info">
+    </a>
+    <div id="user_name"><img src="/images/weather.gif"></div>
   </div>
 </header>
 <main>
-  <div id="news_container"></div>
+  <div class="overlay" id="overlay">
+    <div class="menu-card" >
+    </div>
+  </div>
+  <div id="news_container">
+    <div style="font-size: xx-large">שלום אורח/ת בחר/י אתר לצפיה</div>
+    <img src="/images/help2.jpg" sizes="200x200">
+    <div style="font-size: xx-large">תוסיפו למסך הבית וזה יהפוך לאפליקציה</div>
+    <img src="/images/help1.jpg" sizes="200x200">
+  </div>
+  <div id="zion" style="text-align: center">
+      <a href="https://wa.me/972549774827?text=">
+        &copy; Zion Amar
+      </a>
+  </div>
 </main>
 <footer>
-  <a href="https://zion-amar.ez4tackit.com">
-    &copy; Zion Amar
-  </a>
+    <a href="https://www.svmisim.co.il/%D7%94%D7%97%D7%96%D7%A8%D7%99-%D7%9E%D7%A1/">
+      <img
+              src="/images/money.png"
+              alt="Advertisement"
+              class="ad-image"
+      />
+      <div class="running-text">החזרי מס עושים אצלינו. הקליקו כאן!</div>
+
+    </a>
 </footer>
+<script src="/js/weather.js"></script>
+<script src="/js/ads.js"></script>
 <script src="/js/newsScript.js"></script>
+<script src="/js/allPage.js"></script>
+<script src="/js/menu.js"></script>
+
 </body>
 </html>

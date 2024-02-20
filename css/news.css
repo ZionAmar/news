@@ -1,20 +1,25 @@
 body {
   direction: rtl;
   font-family: Arial, sans-serif;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   overflow-x: hidden; /* Prevent horizontal scrollbar */
+  -ms-overflow-y: hidden; /* Prevent horizontal scrollbar */
 }
 
 header {
+  /*background-image: url("/images/weather.jpg");*/
+  background-size: 100% ;
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
+  right: 0;
   width: 100%;
+  height: 100px;
   background-color: #f1f1f1; /* Set background color as needed */
-  padding: 10px;
   z-index: 1000; /* Ensure it's above other elements */
 }
-
 #siteFeedHeader {
   display: flex;
   justify-content: space-around;
@@ -36,12 +41,13 @@ h1 {
 }
 
 main {
-  margin-top: 100px; /* Adjust margin-top based on header height */
+  margin-top: 110px; /* Adjust margin-top based on header height */
   margin-bottom: 40px; /* Adjust margin-bottom based on footer height */
   padding: 10px;
 }
 
 #siteSelect {
+  text-align: center;
   padding: 10px;
   border-radius: 25px;
   cursor: pointer;
@@ -64,16 +70,27 @@ main {
 }
 
 footer {
+  image-resolution: unset;
   position: fixed;
   bottom: 0;
+  right:0;
   width: 100%;
+  height: 7%;
   background-color: #f1f1f1; /* Set background color as needed */
-  padding: 10px;
-  text-align: center;
 }
 
-footer a {
+#zion a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}a{
   text-decoration: none;
-  color: #333;
+  color: seagreen;
   font-weight: bold;
 }
+img{
+  width: 100%;
+  height: 100%;
+}
+
