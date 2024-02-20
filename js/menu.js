@@ -57,7 +57,7 @@ function loadUserName(){
     let siteName = localStorage.getItem("siteName");
     if(Name) {
         if ((siteName === "בחר אתר")||(!siteName))
-            document.querySelector('#news_container > div').innerHTML = `שלום ${Name} בחר אתר לצפיה`;
+            document.querySelector('#news_container > div').innerHTML = `שלום ${Name} בחר/י אתר לצפיה`;
     }
 }
 loadUserName();
@@ -80,5 +80,5 @@ function moreApp(){
 
 }
 function showAbout(){
-    document.querySelector(".menu-card").innerHTML ="<h2>אודות</h2><br>"+ "<p style='border-bottom: none'>זאת אפליקציה שנוצרה בזמני הפנוי בלימודי תוכנה שנה א' וב' בכדי לשפר כתיבת קוד נכונה. האפליקציה נותנת מבזקים קצרים מאתרים לבחירה . </p>"+"<p>ניתן גם לראות את מזג האויר להוסיף את שמכם ולשנות תצוגה. ניתן לצפות בעוד אפליקציות שלנו.(מתעדכן).והכי חשוב תנו משוב וכך נשתפר..</p>"
+    document.querySelector(".menu-card").innerHTML ="<h2>אודות</h2><br>"+ "<p style='border-bottom: none'>זאת אפליקציה שנוצרה בזמני הפנוי בלימודי תוכנה שנה ב' בכדי לשפר כתיבת קוד נכונה. האפליקציה נותנת מבזקים קצרים מאתרים לבחירה . </p>"+"<p>ניתן גם לראות את מזג האויר להוסיף את שמכם ולשנות תצוגה. ניתן לצפות בעוד אפליקציות שלנו.(מתעדכן).והכי חשוב תנו משוב וכך נשתפר..</p>"
 }

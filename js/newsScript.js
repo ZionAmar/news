@@ -40,14 +40,13 @@ function fetchNews(url, siteIcon, siteName,userName) {
     // }
 }
 //פונקציה לשליפת האתר הנבחר מהמשתמש
-function selectSite(selectTag) {
+function selectSite(selectTag,userName) {
         const selectedOption = selectTag.options[selectTag.selectedIndex];
         const selectedUrl = selectedOption.value;
         const selectedIcon = selectedOption.getAttribute('data-icon');
         const selectedName = selectedOption.innerHTML;
         const newsContainer = document.querySelector('#news_container');
             newsContainer.style.backgroundImage = `url("")`;
-    let userName = localStorage.getItem('userName');
     if(userName){
         fetchNews(selectedUrl, selectedIcon, selectedName,userName);
     }else{
@@ -56,6 +55,7 @@ function selectSite(selectTag) {
 }
 // פונקציה לבחירת אתר מה Local Storage
 function selectSiteFromStorage() {
+    let userName = localStorage.getItem('userName');
     const storedSiteName = localStorage.getItem('SiteName');
     const selectedSite = document.querySelector('#siteSelect');
     if (storedSiteName) {
@@ -65,7 +65,7 @@ function selectSiteFromStorage() {
             // בצע בחירה אוטומטית בתגית select
             optionToSelect.selected = true;
             // קרא לפונקציה שמציגה את המבזקים
-            selectSite(selectedSite);
+            selectSite(selectedSite,userName);
         }
     }
 }
